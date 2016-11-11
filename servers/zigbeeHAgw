@@ -18,7 +18,7 @@ killing_myself=0
 running_thresh_secs=5
 
 # pause after resetting hardware. 5 appears to be enough 90% of the time but...
-hw_reset_sleep=5
+hw_reset_sleep=0
 
 # exit codes
 ERROR_NO_TARGET=10
@@ -1024,15 +1024,15 @@ hw_reset_soc()
 		# in debian we use a completely different method
 		#../tools/bbb_usbreset.bin
 
-		#../tools/tty-reset.sh
-		hit_gpio_reset_line
+		../tools/tty-reset.sh
+		#hit_gpio_reset_line
 		
 		# echo -n "G: "; echo sleeping only 1, trying to create problem
 		echo -n  " sleeping $hw_reset_sleep seconds after reset... "
 		sleep $hw_reset_sleep
 
                 # query the znp for its sw version
-	    ../tools/gw_soc_fw_version_query.bin /dev/$ZBEE_SERIAL_PORT
+	    #../tools/gw_soc_fw_version_query.bin /dev/$ZBEE_SERIAL_PORT
 
 		echo done
 		;;
